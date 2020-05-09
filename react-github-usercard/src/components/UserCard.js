@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card, Image, Icon } from 'semantic-ui-react';
 
 const UserCard = (props) => {
   const { 
@@ -14,19 +15,26 @@ const UserCard = (props) => {
 
   return (
     <>
-      <img src={avatar_url} alt="avatar" />
-      <h2>{name}</h2>
-      <h3>{login}</h3>
-      <p>Location: {location}</p>
-      <p>Profile: 
-        <a 
-          href={html_url}
-          target="_blank"
-        >{html_url}</a>
-      </p>
-      <p>Followers: {followers}</p>
-      <p>Following: {following}</p>
-      <p>Bio: {bio}</p>
+      <Card centered raised>
+        <Image src={avatar_url} alt="avatar" />
+        <Card.Content>
+          <Card.Header>{name}</Card.Header>
+          <Card.Meta>{login}</Card.Meta>
+          <Card.Description>
+            Location: {location}<br/>
+            Profile: 
+            <a 
+              href={html_url}
+              target="_blank"
+            >{html_url}</a><br/>
+            Bio: {bio}
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <Icon color="red" name="users" /> {followers} followers<br/>
+          <Icon color="blue" name="users" /> {following} following<br/>
+        </Card.Content>
+      </Card>
     </>
   );
 }
